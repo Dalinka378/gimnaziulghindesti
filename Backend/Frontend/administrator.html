@@ -6,30 +6,21 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form action="http://localhost:3000/register" method="POST">
-    <input type="email" name="email" placeholder="mail" required>
-
-    <input type="password" name="password" placeholder="parola" required>
-
-    <input type="password" name="confirm_password" placeholder="confirmă parola" required>
-
-    <button type="submit">CONTINUĂ</button>
-</form>
 
 <div class="container">
     <div class="header">Autentificare</div>
 
-    <div class="form">
-        <input type="email" placeholder="mail">
+    <form class="form" action="http://localhost:3000/register" method="POST">
+        <input type="email" name="email" placeholder="mail" required>
 
         <small>Parola trebuie să conțină cel puțin 8 caractere</small>
-        <input type="password" placeholder="parola">
+        <input type="password" name="password" placeholder="parola" required>
 
         <small>Parola trebuie să conțină cel puțin 8 caractere</small>
-        <input type="password" placeholder="parola">
+        <input type="password" name="confirm_password" placeholder="confirmă parola" required>
 
-        <button class="btn">CONTINUĂ</button>
-    </div>
+        <button class="btn" type="submit">CONTINUĂ</button>
+    </form>
 </div>
 
 </body>
