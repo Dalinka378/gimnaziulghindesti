@@ -3,23 +3,30 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Autentificare</title>
-    <link rel="stylesheet" href="/Frontend/css/administrator.css">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<div class="container">
+    <div class="login-box">
+        
+        <div class="header">
+            <h2>Login</h2>
+        </div>
 
-    <div class="container">
-        <div class="header">Autentificare</div>
+        <!-- FORM -->
+        <form class="form" action="/login" method="POST">
+            
+            <input type="text" name="username" placeholder="User" required>
+            
+            <input type="password" name="password" placeholder="Parolă" required>
 
-        <form class="form" action="http://localhost:3000/register" method="POST">
-            <input type="email" name="email" placeholder="mail" required>
+            <button type="submit">CONTINUĂ</button>
 
-            <small>Parola trebuie să conțină cel puțin 8 caractere</small>
-            <input type="password" name="password" placeholder="parola" required>
+        </form>
 
-            <small>Parola trebuie să conțină cel puțin 8 caractere</small>
-            <input type="password" name="confirm_password" placeholder="confirmă parola" required>
+    </div>
+</div>
 
             <button class="btn" type="submit">CONTINUĂ</button>
         </form>
