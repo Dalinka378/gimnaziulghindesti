@@ -29,4 +29,4 @@ async function registerUser(email, password, callback) {
     }
 }
 
-module.exports = { registerUser };
+module.exports = { registerUser };xxx
