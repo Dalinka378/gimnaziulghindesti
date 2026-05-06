@@ -22,8 +22,6 @@ app.post('/register', (req, res) => {
 
 app.listen(3000, () => console.log("Server pornit pe portul 3000"));
 
-// ... restul codului tău de sus ...
-
 app.post('/login', (req, res) => {
     const { email, password } = req.body;
 

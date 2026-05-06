@@ -19,9 +19,9 @@ async function registerUser(email, password, callback) {
     try {
         // Transformăm parola în hash (10 este nivelul de securitate)
         const hashedPassword = await bcrypt.hash(password, 10);
-        
+
         const query = `INSERT INTO utilizatori (email, parola) VALUES (?, ?)`;
-        db.run(query, [email, hashedPassword], function(err) {
+        db.run(query, [email, hashedPassword], function (err) {
             callback(err, this ? this.lastID : null);
         });
     } catch (error) {
@@ -29,4 +29,31 @@ async function registerUser(email, password, callback) {
     }
 }
 
-module.exports = { registerUser };
+// Funcție pentru login
+async function loginUser(email, password, callback) {
+    try {
+        const query = `SELECT * FROM utilizatori WHERE email = ?`;
+        db.get(query, [email], async (err, user) => {
+            if (err) {
+                return callback(err);
+            }
+
+            if (!user) {
+                return callback(null, null);
+            }
+
+            // Compară parola introdusă cu hash-ul din bază
+            const isPasswordValid = await bcrypt.compare(password, user.parola);
+
+            if (isPasswordValid) {
+                callback(null, user);
+            } else {
+                callback(null, null);
+            }
+        });
+    } catch (error) {
+        callback(error);
+    }
+}
+
+module.exports = { registerUser, loginUser };
