@@ -28,7 +28,7 @@
     <script>
         const form = document.querySelector('.form');
 
-        form.addEventListener('submit', function (e) {
+        form.addEventListener('submit', async function (e) {
             e.preventDefault();
 
             const formData = new FormData(form);
@@ -37,12 +37,34 @@
             const confirmPassword = formData.get("confirm_password");
 
             if (password !== confirmPassword) {
-                // Afiseaza o eroare
+                alert("Parolele nu se potrivesc!");
+                return;
             }
 
-            // o functie pentru a transimite datele la backend
+            if (password.length < 8) {
+                alert("Parola trebuie să aibă cel puțin 8 caractere");
+                return;
+            }
 
-            window.location.href = './login.html';
+
+            // Transmite Datele la backend
+            try {
+                const response = await fetch('/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
+                });
+
+                if (response.ok) {
+                    console.log(response);
+                    window.location.href = './login.html';
+                } else {
+                    alert("Eroare la înregistrare. Încercați din nou.");
+                }
+            } catch (error) {
+                alert("Eroare de conexiune!");
+                console.error(error);
+            }
         });
     </script>
 
