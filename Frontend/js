@@ -2,10 +2,13 @@ const studiesBtn = document.getElementById("studiesBtn");
 const studiesDropdown = document.getElementById("studiesDropdown");
 const menuBtn = document.getElementById("menuBtn");
 const sidePanel = document.getElementById("sidePanel");
-const themeBtn = document.getElementById("themeBtn");
+const themeMiniBtn = document.getElementById("themeMiniBtn");
 const THEME_KEY = "mockSiteTheme_v1";
 
 function closeDropdown() {
+  if (!studiesDropdown) {
+    return;
+  }
   studiesDropdown.classList.remove("is-open");
   studiesBtn?.setAttribute("aria-expanded", "false");
 }
@@ -37,7 +40,7 @@ menuBtn?.addEventListener("click", () => {
 function applyTheme(theme) {
   const isDark = theme === "dark";
   document.body.classList.toggle("theme-dark", isDark);
-  themeBtn?.setAttribute("aria-pressed", isDark ? "true" : "false");
+  themeMiniBtn?.setAttribute("aria-pressed", isDark ? "true" : "false");
 }
 
 function toggleTheme() {
@@ -51,7 +54,7 @@ function toggleTheme() {
   }
 }
 
-themeBtn?.addEventListener("click", toggleTheme);
+themeMiniBtn?.addEventListener("click", toggleTheme);
 
 // shortcut: Alt+T
 document.addEventListener("keydown", (e) => {
