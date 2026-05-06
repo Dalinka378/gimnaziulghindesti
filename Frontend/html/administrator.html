@@ -1,39 +1,51 @@
 <!DOCTYPE html>
 <html lang="ro">
+
 <head>
     <meta charset="UTF-8">
     <title>Creare cont</title>
     <link rel="stylesheet" href="/Frontend/css/administrator.css">
 </head>
+
 <body>
 
-<div class="container">
-    <div class="header">Creare cont</div>
+    <div class="container">
+        <div class="header">Creare cont</div>
 
-    <form class="form" action="/register" method="POST">
-        <input type="email" name="email" placeholder="mail" required>
+        <form class="form" action="/register" method="POST">
+            <input type="email" name="email" placeholder="mail" required>
 
-        <small>Parola trebuie să conțină cel puțin 8 caractere</small>
-        <input type="password" name="password" placeholder="parola" required>
+            <small>Parola trebuie să conțină cel puțin 8 caractere</small>
+            <input type="password" name="password" placeholder="parola" required>
 
-        <small>Confirmă parola</small>
-        <input type="password" name="confirm_password" placeholder="confirmă parola" required>
+            <small>Confirmă parola</small>
+            <input type="password" name="confirm_password" placeholder="confirmă parola" required>
 
-        <button class="btn" type="submit">CREEAZĂ CONT</button>
-    </form>
-</div>
+            <button class="btn" type="submit">CREEAZĂ CONT</button>
+        </form>
+    </div>
 
-<script>
-    const form = document.querySelector('.form');
-    
-    form.addEventListener('submit', function(e) {
-        // Dacă vrei să se întâmple instantaneu după ce serverul primește datele,
-        // lăsăm serverul să facă redirecționarea (Varianta 1).
-        
-        // Dacă totuși vrei să forțezi din browser fără alertă:
-        console.log("Redirectare în curs...");
-    });
-</script>
+    <script>
+        const form = document.querySelector('.form');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const formData = new FormData(form);
+            const email = formData.get("email");
+            const password = formData.get("password");
+            const confirmPassword = formData.get("confirm_password");
+
+            if (password !== confirmPassword) {
+                // Afiseaza o eroare
+            }
+
+            // o functie pentru a transimite datele la backend
+
+            window.location.href = './login.html';
+        });
+    </script>
 
 </body>
+
 </html>
