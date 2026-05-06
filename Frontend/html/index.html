@@ -1,11 +1,91 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="ro">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Site mockup – ca în poză</title>
+  <link rel="stylesheet" href="/Frontend/css/style.css" />
 </head>
 <body>
-    
+  <div class="top-mini">
+    <div class="top-mini__inner">
+      <div class="lang">
+        <span class="lang__dot" aria-hidden="true"></span>
+        <button class="lang__btn is-active" type="button" data-lang="RO">RO</button>
+        <button class="lang__btn" type="button" data-lang="RU">RU</button>
+        <button class="lang__btn" type="button" data-lang="EN">EN</button>
+      </div>
+    </div>
+  </div>
+
+  <header class="header">
+    <div class="header__inner">
+      <a class="logo" href="#" aria-label="Logo">
+        <span class="logo__text">LOGO</span>
+      </a>
+
+      <nav class="nav" aria-label="Navigare principală">
+        <a class="nav__link" href="#">Contacte</a>
+
+        <div class="nav__group" id="studiesGroup">
+          <button class="nav__link nav__link--btn" type="button" id="studiesBtn" aria-haspopup="true" aria-expanded="false">
+            Proces de studii <span class="caret" aria-hidden="true">▼</span>
+          </button>
+          <div class="dropdown" id="studiesDropdown" role="menu" aria-label="Proces de studii">
+            <a class="dropdown__item" role="menuitem" href="#">Orarul</a>
+            <a class="dropdown__item" role="menuitem" href="#">Transportarea</a>
+            <a class="dropdown__item" role="menuitem" href="#">Alimentarea</a>
+            <a class="dropdown__item" role="menuitem" href="#">Activități extrașcolare</a>
+            <a class="dropdown__item" role="menuitem" href="#">Consiliul elevilor</a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="header__actions">
+        <button class="icon-btn theme-btn" type="button" id="themeBtn" aria-label="Schimbă tema (Light/Dark)" aria-pressed="false" title="Light/Dark">
+          <span class="icon icon--moon" aria-hidden="true"></span>
+        </button>
+        <button class="icon-btn" type="button" aria-label="Căutare">
+          <span class="icon icon--search" aria-hidden="true"></span>
+        </button>
+        <button class="icon-btn" type="button" id="menuBtn" aria-label="Meniu" aria-controls="sidePanel" aria-expanded="false">
+          <span class="icon icon--hamburger" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="hero" aria-label="Imagine principală">
+    <div class="hero__image" role="img" aria-label="Imagine de fundal (înlocuiește cu poza ta)"></div>
+
+    <div class="hero__overlay">
+      <div class="hero__title">
+        GIMNAZIUL „M. EMINESCU” GHINDEȘTI
+      </div>
+
+      <div class="hero__credit">
+        Foto: Ludmila Țurcanu
+      </div>
+
+      <div class="hero__brand" aria-label="ZN">
+        <span class="hero__brand-mark">ZN</span>
+      </div>
+    </div>
+
+    <aside class="side-panel" id="sidePanel" aria-label="Panou lateral">
+      <div class="side-panel__inner">
+        <div class="side-panel__spacer"></div>
+        <div class="side-panel__menu">
+          <div class="side-panel__title">Blog</div>
+          <a class="side-panel__item" href="#">- Noutăți</a>
+          <a class="side-panel__item" href="#">- Profesori</a>
+          <a class="side-panel__item" href="#">- Despre noi</a>
+          <a class="side-panel__item" href="#">- Premii</a>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <script src="site.js"></script>
 </body>
 </html>
