@@ -1,27 +1,24 @@
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
-const bcrypt = require('bcrypt'); // Biblioteca instalată adineaori
+const bcrypt = require('bcrypt');
 
 const dbPath = path.join(__dirname, 'scoala.db');
 const db = new sqlite3.Database(dbPath);
 
-// Tabelul rămâne la fel
 db.serialize(() => {
     db.run(`CREATE TABLE IF NOT EXISTS utilizatori (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
+        nume TEXT,
         email TEXT UNIQUE,
         parola TEXT
     )`);
 });
 
-// Funcție ASINCRONĂ pentru înregistrare
-async function registerUser(email, password, callback) {
+async function registerUser(nume, email, password, callback) {
     try {
-        // Transformăm parola în hash (10 este nivelul de securitate)
         const hashedPassword = await bcrypt.hash(password, 10);
-
-        const query = `INSERT INTO utilizatori (email, parola) VALUES (?, ?)`;
-        db.run(query, [email, hashedPassword], function (err) {
+        const query = `INSERT INTO utilizatori (nume, email, parola) VALUES (?, ?, ?)`;
+        db.run(query, [nume, email, hashedPassword], function(err) {
             callback(err, this ? this.lastID : null);
         });
     } catch (error) {
@@ -29,35 +26,5 @@ async function registerUser(email, password, callback) {
     }
 }
 
-<<<<<<< HEAD
-module.exports = { registerUser };xxx
-=======
-// Funcție pentru login
-async function loginUser(email, password, callback) {
-    try {
-        const query = `SELECT * FROM utilizatori WHERE email = ?`;
-        db.get(query, [email], async (err, user) => {
-            if (err) {
-                return callback(err);
-            }
-
-            if (!user) {
-                return callback(null, null);
-            }
-
-            // Compară parola introdusă cu hash-ul din bază
-            const isPasswordValid = await bcrypt.compare(password, user.parola);
-
-            if (isPasswordValid) {
-                callback(null, user);
-            } else {
-                callback(null, null);
-            }
-        });
-    } catch (error) {
-        callback(error);
-    }
-}
-
-module.exports = { registerUser, loginUser };
->>>>>>> d85d1294b9a401186a7a7ec5e464b7ff88306fe5
+// Asigură-te că exportul de jos este curat, fără semnele <<<<<<
+module.exports = { registerUser };
