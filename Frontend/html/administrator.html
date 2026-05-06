@@ -23,13 +23,26 @@
 
             <button class="btn" type="submit">CREEAZĂ CONT</button>
         </form>
+        <div id="error-message"></div>
+
     </div>
 
     <script>
         const form = document.querySelector('.form');
+        const errorDiv = document.getElementById('error-message');
+
+        function showError(message) {
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+        }
+
+        function hideError() {
+            errorDiv.style.display = 'none';
+        }
 
         form.addEventListener('submit', async function (e) {
             e.preventDefault();
+            hideError();
 
             const formData = new FormData(form);
             const email = formData.get("email");
@@ -37,12 +50,12 @@
             const confirmPassword = formData.get("confirm_password");
 
             if (password !== confirmPassword) {
-                alert("Parolele nu se potrivesc!");
+                showError("Parolele nu se potrivesc!");
                 return;
             }
 
             if (password.length < 8) {
-                alert("Parola trebuie să aibă cel puțin 8 caractere");
+                showError("Parola trebuie să aibă cel puțin 8 caractere");
                 return;
             }
 
@@ -59,10 +72,10 @@
                     console.log(response);
                     window.location.href = './login.html';
                 } else {
-                    alert("Eroare la înregistrare. Încercați din nou.");
+                    showError("Eroare la înregistrare. Încercați din nou.");
                 }
             } catch (error) {
-                alert("Eroare de conexiune!");
+                showError("Eroare de conexiune!");
                 console.error(error);
             }
         });

@@ -14,7 +14,7 @@ body {
     background-color: #BEBBBB;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 /* header */
@@ -47,7 +47,7 @@ body {
 /* efect când dai click */
 .form input:focus {
     background-color: #ffffff;
-    box-shadow: 0 0 5px rgba(128,0,0,0.5);
+    box-shadow: 0 0 5px rgba(128, 0, 0, 0.5);
 }
 
 /* text mic */
@@ -74,4 +74,13 @@ body {
 
 .btn:hover {
     background-color: #800000;
+}
+
+#error-message {
+    color: #d32f2f;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #ffebee;
+    border-radius: 4px;
+    display: none;
 }
