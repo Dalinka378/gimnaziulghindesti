@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const dbLogic = require('./login'); 
+const dbLogic = require('./login');
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -32,7 +32,7 @@ app.post('/login', (req, res) => {
             console.error("Eroare server:", err.message);
             return res.status(500).send("Eroare la procesarea cererii.");
         }
-        
+
         if (!user) {
             // Nu spunem exact dacă e-mailul sau parola e greșită (securitate!)
             return res.status(401).send("Email sau parolă incorectă.");
