@@ -1,0 +1,113 @@
+* Pagina Profesori (nu folosește grid-ul de pe home) */
+.page--profesori{
+  background:#bfbfbf;
+  min-height: calc(100vh - 86px);
+  padding: 28px 18px 40px;
+}
+
+.prof-wrap{
+  width: min(900px, 100%);
+  margin: 0 auto;
+  background: var(--burgundy);
+  color: #fff;
+  border: 3px solid rgba(0,0,0,.2);
+  box-shadow: var(--shadow);
+  padding: 28px 32px 36px;
+}
+
+.prof-title{
+  margin: 0 0 8px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: italic;
+  font-size: 32px;
+  letter-spacing: .06em;
+  text-align: center;
+  color: rgba(255,255,255,.9);
+}
+
+.prof-intro{
+  margin: 0 0 22px;
+  text-align: center;
+  font-size: 13px;
+  opacity: .88;
+  line-height: 1.5;
+}
+
+.prof-table-wrap{
+  overflow-x: auto;
+}
+
+.prof-table{
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.prof-table th,
+.prof-table td{
+  padding: 12px 14px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255,255,255,.18);
+}
+
+.prof-table thead th{
+  font-weight: 700;
+  background: rgba(0,0,0,.15);
+}
+
+.prof-table tbody tr:hover{
+  background: rgba(0,0,0,.1);
+}
+
+@media (max-width: 640px){
+  .prof-wrap{padding: 18px 14px 24px;}
+  .prof-title{font-size: 26px;}
+  .prof-table th,
+  .prof-table td{padding: 10px 8px; font-size: 13px;}
+}
+
+.hero{
+  position:relative;
+  height:calc(100vh - 86px);
+  min-height:520px;
+  overflow:hidden;
+}
+.hero__image{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(0deg, rgba(0,0,0,.12), rgba(0,0,0,.12)),
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,.20), transparent 48%),
+    linear-gradient(120deg, #2b2b2b, #1a1a1a);
+  background-size:cover;
+  background-position:center;
+}
+body.theme-dark .hero__image{
+  filter: brightness(.86) contrast(1.05) saturate(.95);
+}
+.hero__overlay{
+  position:absolute;inset:0;
+}
+.hero__title{
+  position:absolute;
+  left:50%;
+  top:46%;
+  transform:translate(-50%,-50%);
+  color:rgba(255,255,255,.55);
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style:italic;
+  font-size:22px;
+  letter-spacing:.06em;
+  text-align:center;
+  text-shadow: 0 2px 12px rgba(0,0,0,.35);
+  white-space:nowrap;
+}
+.hero__credit{
+  position:absolute;
+  left:18px;
+  bottom:18px;
+  color:rgba(255,255,255,.55);
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style:italic;
+  font-size:14px;
+  text-shadow: 0 2px 10px rgba(0,0,0,.35);
+}
