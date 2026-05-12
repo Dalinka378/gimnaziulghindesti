@@ -1,0 +1,92 @@
+/* Stiluri specifice pentru pagina Profesori */
+
+.page--profesori{
+  background:#bfbfbf;
+  min-height: calc(100vh - 86px);
+  padding: 28px 18px 40px;
+}
+
+.home-grid{
+  width:min(1200px, 100%);
+  margin: 0 auto;
+  display:grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 22px;
+  padding: 18px 0;
+}
+
+.home-card{
+  background: var(--burgundy);
+  height: 260px;
+}
+
+@media (max-width: 1100px){
+  .home-grid{grid-template-columns: repeat(4, 1fr);}
+}
+@media (max-width: 900px){
+  .home-grid{grid-template-columns: repeat(3, 1fr);}
+}
+@media (max-width: 680px){
+  .home-grid{grid-template-columns: repeat(2, 1fr);}
+}
+
+.prof-wrap{
+  width: min(900px, 100%);
+  margin: 0 auto;
+  background: var(--burgundy);
+  color: #fff;
+  border: 3px solid rgba(0,0,0,.2);
+  box-shadow: var(--shadow);
+  padding: 28px 32px 36px;
+}
+
+.prof-title{
+  margin: 0 0 8px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: italic;
+  font-size: 32px;
+  letter-spacing: .06em;
+  text-align: center;
+  color: rgba(255,255,255,.9);
+}
+
+.prof-intro{
+  margin: 0 0 22px;
+  text-align: center;
+  font-size: 13px;
+  opacity: .88;
+  line-height: 1.5;
+}
+
+.prof-table-wrap{
+  overflow-x: auto;
+}
+
+.prof-table{
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.prof-table th,
+.prof-table td{
+  padding: 12px 14px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255,255,255,.18);
+}
+
+.prof-table thead th{
+  font-weight: 700;
+  background: rgba(0,0,0,.15);
+}
+
+.prof-table tbody tr:hover{
+  background: rgba(0,0,0,.1);
+}
+
+@media (max-width: 640px){
+  .prof-wrap{padding: 18px 14px 24px;}
+  .prof-title{font-size: 26px;}
+  .prof-table th,
+  .prof-table td{padding: 10px 8px; font-size: 13px;}
+}

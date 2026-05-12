@@ -1,0 +1,345 @@
+/* CSS pagina principală (include și stiluri comune) */
+
+:root{
+  --burgundy:#8B0000;
+  --burgundy-dark:#640000;
+  --text:#ffffff;
+  --shadow: 0 10px 24px rgba(0,0,0,.18);
+  --page-bg: #111;
+  --icon: #fff;
+}
+
+body.theme-dark{
+  --burgundy:#5a0000;
+  --burgundy-dark:#2f0000;
+  --text:#f3f3f3;
+  --shadow: 0 14px 34px rgba(0,0,0,.45);
+  --page-bg: #0b0b0d;
+  --icon: #f3f3f3;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  background: var(--page-bg);
+}
+
+/* mini bar top */
+.top-mini{
+  background:var(--burgundy);
+  color:var(--text);
+  height:22px;
+  display:flex;
+  align-items:center;
+}
+.top-mini__inner{
+  width:min(1200px, 100%);
+  margin:0 auto;
+  padding:0 18px;
+  display:grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items:center;
+}
+.top-left{
+  justify-self:start;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:12px;
+}
+.top-center{
+  justify-self:center;
+  width:1px;
+  height:1px;
+}
+.top-right{
+  justify-self:end;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:12px;
+}
+.top-icon-btn{
+  width:22px;height:22px;
+  border:0;
+  background:transparent;
+  color:#fff;
+  cursor:pointer;
+  opacity:.92;
+  display:grid;
+  place-items:center;
+  padding:0;
+}
+.top-icon-btn:hover{opacity:1}
+.top-icon-link{
+  width:20px;height:20px;
+  display:grid;
+  place-items:center;
+  color:#fff;
+  text-decoration:none;
+  opacity:.92;
+}
+.top-icon-link:hover{opacity:1}
+.admin-icon{
+  display:block;
+  color:#fff;
+  opacity:.95;
+}
+.lang{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+  opacity:.95;
+}
+.lang__btn{
+  appearance:none;
+  border:0;
+  background:transparent;
+  color:rgba(255,255,255,.92);
+  font-weight:600;
+  cursor:pointer;
+  padding:0;
+}
+.lang__btn.is-active{color:#fff;text-decoration:underline}
+
+/* header */
+.header{
+  background:var(--burgundy);
+  color:var(--text);
+  height:64px;
+  display:flex;
+  align-items:center;
+  position:relative;
+  z-index:5;
+}
+.header__inner{
+  width:min(1200px, 100%);
+  margin:0 auto;
+  padding:0 18px;
+  display:flex;
+  align-items:center;
+  gap:26px;
+}
+.logo{
+  color:#fff;
+  text-decoration:none;
+  display:flex;
+  align-items:center;
+  min-width:120px;
+}
+.logo__text{
+  font-weight:700;
+  letter-spacing:.08em;
+  font-size:12px;
+  opacity:.9;
+}
+.nav{
+  display:flex;
+  align-items:center;
+  gap:34px;
+  flex:1;
+  justify-content:center;
+}
+.nav__link{
+  color:#fff;
+  text-decoration:none;
+  font-size:13px;
+  letter-spacing:.02em;
+  opacity:.95;
+  padding:10px 6px;
+}
+.nav__link:hover{opacity:1}
+.nav__link--btn{
+  background:transparent;
+  border:0;
+  cursor:pointer;
+  font:inherit;
+  color:#fff;
+}
+.caret{font-size:10px;opacity:.8;margin-left:6px}
+.nav__group{position:relative}
+.dropdown{
+  position:absolute;
+  top:44px;
+  left:0;
+  width:220px;
+  background:var(--burgundy);
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow: var(--shadow);
+  display:none;
+  padding:10px 0;
+}
+.dropdown.is-open{display:block}
+.dropdown__item{
+  display:block;
+  padding:7px 12px;
+  color:#fff;
+  text-decoration:none;
+  font-size:12px;
+  opacity:.95;
+}
+.dropdown__item:hover{background:rgba(0,0,0,.12);opacity:1}
+
+.header__actions{
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+.icon-btn{
+  width:40px;height:40px;
+  border:0;
+  background:transparent;
+  color:#fff;
+  cursor:pointer;
+  display:grid;
+  place-items:center;
+}
+.icon-btn:hover{background:rgba(0,0,0,.12);border-radius:6px}
+.icon{display:block}
+.icon--search{
+  width:16px;height:16px;border:2px solid #fff;border-radius:50%;
+  position:relative;opacity:.9;
+}
+.icon--search::after{
+  content:"";
+  position:absolute;
+  width:8px;height:2px;
+  background:#fff;
+  right:-7px;bottom:-3px;
+  transform:rotate(45deg);
+  border-radius:2px;
+}
+.icon--hamburger{
+  width:20px;height:14px;
+  background:
+    linear-gradient(#fff,#fff) 0 0/100% 2px,
+    linear-gradient(#fff,#fff) 0 6px/100% 2px,
+    linear-gradient(#fff,#fff) 0 12px/100% 2px;
+  background-repeat:no-repeat;
+  opacity:.95;
+}
+
+/* theme icon (SVG) */
+.theme-icon{
+  display:block;
+  color: var(--icon);
+  opacity:.95;
+}
+body.theme-dark .theme-icon{opacity:1}
+.theme-icon__moon{display:none}
+body.theme-dark .theme-icon__sun{display:none}
+body.theme-dark .theme-icon__moon{display:block}
+
+/* layout wrapper */
+.main{
+  min-height: calc(100vh - 86px);
+  position: relative;
+}
+
+/* side panel */
+.side-panel{
+  position:absolute;
+  right:0;
+  top:0;
+  height:100%;
+  width:0;
+  background:var(--burgundy);
+  display:block;
+  overflow:hidden;
+  transition: width .22s ease;
+}
+.side-panel.is-open{width:120px}
+.side-panel__inner{
+  height:100%;
+  padding:14px 14px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+}
+.side-panel__spacer{flex:1}
+.side-panel__menu{
+  color:#fff;
+  font-size:12px;
+  line-height:1.65;
+  opacity:.95;
+}
+.side-panel__title{font-weight:700;margin-bottom:4px}
+.side-panel__item{
+  color:#fff;
+  text-decoration:none;
+  display:block;
+}
+.side-panel__item:hover{text-decoration:underline}
+
+@media (max-width: 860px){
+  .nav{display:none}
+  .side-panel.is-open{width:220px}
+}
+
+/* Stiluri specifice pentru pagina principală (home/hero) */
+
+.hero{
+  position:relative;
+  height:calc(100vh - 86px);
+  min-height:520px;
+  overflow:hidden;
+}
+.hero__image{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(0deg, rgba(0,0,0,.12), rgba(0,0,0,.12)),
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,.20), transparent 48%),
+    linear-gradient(120deg, #2b2b2b, #1a1a1a);
+  background-size:cover;
+  background-position:center;
+}
+body.theme-dark .hero__image{
+  filter: brightness(.86) contrast(1.05) saturate(.95);
+}
+.hero__overlay{
+  position:absolute;inset:0;
+}
+.hero__title{
+  position:absolute;
+  left:50%;
+  top:46%;
+  transform:translate(-50%,-50%);
+  color:rgba(255,255,255,.55);
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style:italic;
+  font-size:22px;
+  letter-spacing:.06em;
+  text-align:center;
+  text-shadow: 0 2px 12px rgba(0,0,0,.35);
+  white-space:nowrap;
+}
+.hero__credit{
+  position:absolute;
+  left:18px;
+  bottom:18px;
+  color:rgba(255,255,255,.55);
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style:italic;
+  font-size:14px;
+  text-shadow: 0 2px 10px rgba(0,0,0,.35);
+}
+
+/* Stiluri pentru titlu simplu */
+h1{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  color:rgba(255,255,255,.55);
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style:italic;
+  font-size:22px;
+  letter-spacing:.06em;
+  text-align:center;
+  text-shadow: 0 2px 12px rgba(0,0,0,.35);
+  white-space:nowrap;
+}
+
