@@ -4,6 +4,18 @@ const dbLogic = require('./login');
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
+
+// Add CORS headers
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    if (req.method === 'OPTIONS') {
+        return res.sendStatus(200);
+    }
+    next();
+});
+
 app.use('/Frontend', express.static(path.join(__dirname, '../Frontend')));
 
 app.post('/register', (req, res) => {
@@ -16,7 +28,7 @@ app.post('/register', (req, res) => {
             return res.status(500).send("Eroare la înregistrare.");
         }
         console.log("Utilizator salvat cu ID:", userId);
-        res.redirect('/Frontend/html/login.html');
+        res.json({ success: true, message: "Utilizator înregistrat cu succes" });
     });
 });
 
@@ -37,7 +49,7 @@ app.post('/login', (req, res) => {
         }
 
         console.log("Utilizator logat cu succes:", user.email);
-        // Aici l-ai putea trimite la o pagină de profil sau dashboard
-        res.redirect('/Frontend/html/index.html');
+        // Return JSON instead of redirecting
+        res.json({ success: true, message: "Logare reușită", user: user });
     });
 });

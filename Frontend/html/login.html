@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html lang="ro">
+
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
     <link rel="stylesheet" href="/Frontend/css/login.css">
 </head>
+
 <body>
 
-<div class="container">
-    <div class="login-box">
-        
-        <div class="header">
-            <h2>Login</h2>
+    <div class="container">
+        <div class="login-box">
+
+            <div class="header">
+                <h2>Login</h2>
+            </div>
+
+            <form class="form" action="http://localhost:3000/login" method="POST">
+                <input type="email" name="email" placeholder="User" required>
+                <input type="password" name="password" placeholder="Parolă" required>
+                <button type="submit">CONTINUĂ</button>
+            </form>
+
         </div>
-
-        <form class="form" action="/login" method="POST">
-            <input type="text" name="username" placeholder="User" required>
-            <input type="password" name="password" placeholder="Parolă" required>
-            <button type="submit">CONTINUĂ</button>
-        </form>
-
     </div>
-</div>
 
 </body>
+
 </html>

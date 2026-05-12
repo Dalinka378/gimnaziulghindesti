@@ -11,15 +11,14 @@
 
     <div class="container">
         <div class="header">Creare cont</div>
-
-        <form class="form" action="/register" method="POST">
+        <form class="form">
             <input type="email" name="email" placeholder="mail" required>
 
             <small>Parola trebuie să conțină cel puțin 8 caractere</small>
             <input type="password" name="password" placeholder="parola" required>
 
             <small>Confirmă parola</small>
-            <input type="password" name="confirm_password" placeholder="confirmă parola" required> 
+            <input type="password" name="confirm_password" placeholder="confirmă parola" required>
 
             <button class="btn" type="submit">CREEAZĂ CONT</button>
         </form>
@@ -62,17 +61,17 @@
 
             // Transmite Datele la backend
             try {
-                const response = await fetch('/register', {
+                const response = await fetch('http://localhost:3000/register', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                     body: `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
                 });
 
                 if (response.ok) {
-                    console.log(response);
                     window.location.href = './login.html';
                 } else {
-                    showError("Eroare la înregistrare. Încercați din nou.");
+                    const errorText = await response.text();
+                    showError(errorText || "Eroare la înregistrare. Încercați din nou.");
                 }
             } catch (error) {
                 showError("Eroare de conexiune!");

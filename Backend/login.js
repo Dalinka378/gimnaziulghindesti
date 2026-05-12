@@ -8,17 +8,16 @@ const db = new sqlite3.Database(dbPath);
 db.serialize(() => {
     db.run(`CREATE TABLE IF NOT EXISTS utilizatori (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        nume TEXT,
         email TEXT UNIQUE,
         parola TEXT
     )`);
 });
 
-async function registerUser(nume, email, password, callback) {
+async function registerUser(email, password, callback) {
     try {
         const hashedPassword = await bcrypt.hash(password, 10);
-        const query = `INSERT INTO utilizatori (nume, email, parola) VALUES (?, ?, ?)`;
-        db.run(query, [nume, email, hashedPassword], function(err) {
+        const query = `INSERT INTO utilizatori (email, parola) VALUES (?, ?)`;
+        db.run(query, [email, hashedPassword], function (err) {
             callback(err, this ? this.lastID : null);
         });
     } catch (error) {
@@ -26,5 +25,28 @@ async function registerUser(nume, email, password, callback) {
     }
 }
 
-// Asigură-te că exportul de jos este curat, fără semnele <<<<<<
-module.exports = { registerUser };
+function loginUser(email, password, callback) {
+    const query = `SELECT id, email, parola FROM utilizatori WHERE email = ?`;
+    db.get(query, [email], async (err, user) => {
+        if (err) {
+            return callback(err);
+        }
+
+        if (!user) {
+            return callback(null, null);
+        }
+
+        try {
+            const passwordMatch = await bcrypt.compare(password, user.parola);
+            if (passwordMatch) {
+                callback(null, { id: user.id, email: user.email });
+            } else {
+                callback(null, null);
+            }
+        } catch (error) {
+            callback(error);
+        }
+    });
+}
+
+module.exports = { registerUser, loginUser };
