@@ -16,15 +16,54 @@
                 <h2>Login</h2>
             </div>
 
-            <form class="form" action="http://localhost:3000/login" method="POST">
+            <form class="form">
                 <input type="email" name="email" placeholder="User" required>
                 <input type="password" name="password" placeholder="Parolă" required>
                 <button type="submit">CONTINUĂ</button>
             </form>
+            <div id="error-message"></div>
 
         </div>
     </div>
 
-</body>
+    <script>
+        const form = document.querySelector('.form');
+        const errorDiv = document.getElementById('error-message');
 
-</html>
+        function showError(message) {
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+        }
+
+        function hideError() {
+            errorDiv.style.display = 'none';
+        }
+
+        form.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            hideError();
+
+            const formData = new FormData(form);
+            const email = formData.get("email");
+            const password = formData.get("password");
+
+            try {
+                const response = await fetch('http://localhost:3000/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
+                });
+
+                if (response.ok) {
+                    console.log("Login reușit! Redirecționez...");
+                    window.location.href = './index.html';
+                } else {
+                    const errorText = await response.text();
+                    showError(errorText || "Eroare la autentificare. Încercați din nou.");
+                }
+            } catch (error) {
+                showError("Eroare de conexiune!");
+                console.error(error);
+            }
+        });
+    </script>
