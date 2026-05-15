@@ -642,3 +642,231 @@ body.theme-dark .stat__number { color: var(--accent); }
     .section-title { font-size: 24px; }
     .card-grid { grid-template-columns: 1fr 1fr; }
 }
+/* ============================================================
+   1. VARIABILE ȘI SETĂRI TEMĂ
+   ============================================================ */
+:root {
+    --primary: #8a1e1e;          /* Visiniu */
+    --primary-dark: #721515;
+    --primary-light: #eb2525;
+    --accent: #F59E0B;           /* Chihlimbar */
+    --accent-hover: #D97706;
+    --bg: #FFFFFF;
+    --bg-alt: #F1F5F9;
+    --text: #0f172a;
+    --text-muted: #475569;
+    --border: #E2E8F0;
+    --shadow: 0 4px 20px rgba(0,0,0,0.06);
+    --header-bg: var(--primary);
+    --header-text: #FFFFFF;
+    --footer-bg: var(--primary-dark);
+}
+
+/* TEMA DARK */
+body.theme-dark {
+    --bg: #0F172A;
+    --bg-alt: #1E293B;
+    --text: #F1F5F9;
+    --text-muted: #94A3B8;
+    --border: #334155;
+    --header-bg: #0B1120;
+    --card-bg: #1E293B;
+    --footer-bg: #0B1120;
+}
+
+/* ============================================================
+   2. RESETARE ȘI BAZĂ
+   ============================================================ */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    transition: background 0.3s, color 0.3s;
+}
+
+img { max-width: 100%; height: auto; }
+a { text-decoration: none; color: inherit; transition: 0.2s; }
+
+/* ============================================================
+   3. STRUCTURA NAVIGAȚIE (Header & Mini-Bar)
+   ============================================================ */
+.top-mini {
+    background: var(--primary-dark);
+    color: white;
+    font-size: 13px;
+    padding: 5px 0;
+}
+
+.top-mini__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.header {
+    background: var(--header-bg);
+    color: white;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.header__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.nav { display: flex; gap: 25px; }
+.nav__link { font-weight: 500; opacity: 0.9; }
+.nav__link:hover { opacity: 1; color: var(--accent); }
+
+/* Dropdown */
+.nav__group { position: relative; }
+.dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--bg);
+    color: var(--text);
+    min-width: 200px;
+    box-shadow: var(--shadow);
+    border-radius: 8px;
+    display: none;
+    padding: 10px 0;
+    border: 1px solid var(--border);
+}
+.dropdown.is-open { display: block; animation: fadeIn 0.2s; }
+.dropdown__item {
+    display: block;
+    padding: 10px 20px;
+    font-size: 14px;
+}
+.dropdown__item:hover { background: var(--bg-alt); }
+
+/* ============================================================
+   4. CONȚINUT PAGINI (Main Content)
+   ============================================================ */
+.main { padding: 50px 0; min-height: 70vh; }
+
+.section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.section-title::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--accent);
+    margin: 10px auto;
+}
+
+/* Grila de carduri (Profesori, Noutăți, Activități) */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.card {
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+
+/* Tabele (Orar, Alimentatie) */
+.table-container {
+    max-width: 1000px;
+    margin: 20px auto;
+    overflow-x: auto;
+    padding: 0 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--bg);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+th, td {
+    padding: 15px;
+    border: 1px solid var(--border);
+    text-align: center;
+}
+
+th { background: var(--primary); color: white; }
+tr:nth-child(even) { background: var(--bg-alt); }
+
+/* ============================================================
+   5. FOOTER
+   ============================================================ */
+.site-footer {
+    background: var(--footer-bg);
+    color: white;
+    padding: 60px 20px;
+    margin-top: 50px;
+}
+
+.site-footer__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+}
+
+.footer-col h4 { margin-bottom: 20px; color: var(--accent); }
+.footer-copy { text-align: center; margin-top: 40px; opacity: 0.6; font-size: 13px; }
+
+/* ============================================================
+   6. ANIMATII ȘI UTILITARE
+   ============================================================ */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#themeMiniBtn {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white;
+    padding: 2px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#themeMiniBtn:hover { background: rgba(255,255,255,0.1); }
+
+/* Resposivitate */
+@media (max-width: 768px) {
+    .nav { display: none; } /* Meniul devine Side-Panel pe mobil */
+    .section-title { font-size: 1.8rem; }
+}
