@@ -1,113 +1,133 @@
-* Pagina Profesori (nu folosește grid-ul de pe home) */
-.page--profesori{
-  background:#bfbfbf;
-  min-height: calc(100vh - 86px);
-  padding: 28px 18px 40px;
+/* RESET ȘI FUNDAL GENERAL */
+:root {
+    --primary-red: #8a1e1e;
+    --bg-gray: #dcdcdc;
+    --text-dark: #333;
+    --white: #ffffff;
 }
 
-.prof-wrap{
-  width: min(900px, 100%);
-  margin: 0 auto;
-  background: var(--burgundy);
-  color: #fff;
-  border: 3px solid rgba(0,0,0,.2);
-  box-shadow: var(--shadow);
-  padding: 28px 32px 36px;
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--bg-gray);
 }
 
-.prof-title{
-  margin: 0 0 8px;
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-style: italic;
-  font-size: 32px;
-  letter-spacing: .06em;
-  text-align: center;
-  color: rgba(255,255,255,.9);
+/* HEADER STYLE (conform capturii) */
+.header {
+    background-color: var(--primary-red);
+    height: 80px;
+    display: flex;
+    align-items: center;
+    color: white;
 }
 
-.prof-intro{
-  margin: 0 0 22px;
-  text-align: center;
-  font-size: 13px;
-  opacity: .88;
-  line-height: 1.5;
+.header__inner {
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.prof-table-wrap{
-  overflow-x: auto;
+.nav { display: flex; gap: 30px; }
+.nav__link, .nav__link--btn {
+    color: white;
+    text-decoration: none;
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
 }
 
-.prof-table{
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 14px;
+/* TOP MINI BAR */
+.top-mini {
+    background-color: var(--primary-red);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding: 5px 0;
+}
+.top-mini__inner { width: 95%; margin: 0 auto; display: flex; justify-content: space-between; color: white; }
+
+/* GRID-UL PENTRU PROFESORI */
+.container {
+    width: 95%;
+    margin: 40px auto;
 }
 
-.prof-table th,
-.prof-table td{
-  padding: 12px 14px;
-  text-align: left;
-  border-bottom: 1px solid rgba(255,255,255,.18);
+.page-title {
+    text-align: center;
+    color: var(--primary-red);
+    margin-bottom: 40px;
+    text-transform: uppercase;
 }
 
-.prof-table thead th{
-  font-weight: 700;
-  background: rgba(0,0,0,.15);
+.prof-grid {
+    display: grid;
+    /* Creează 8 coloane pe ecrane mari, se adaptează pe ecrane mici */
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 15px;
+    justify-content: center;
 }
 
-.prof-table tbody tr:hover{
-  background: rgba(0,0,0,.1);
+/* CĂSUȚA PROFESORULUI (CARD-UL) */
+.prof-card {
+    background-color: var(--white);
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.2s;
 }
 
-@media (max-width: 640px){
-  .prof-wrap{padding: 18px 14px 24px;}
-  .prof-title{font-size: 26px;}
-  .prof-table th,
-  .prof-table td{padding: 10px 8px; font-size: 13px;}
+.prof-card:hover {
+    transform: scale(1.03);
 }
 
-.hero{
-  position:relative;
-  height:calc(100vh - 86px);
-  min-height:520px;
-  overflow:hidden;
+/* BOXA VIȘINIE PENTRU POZĂ */
+.prof-photo-box {
+    background-color: var(--primary-red);
+    width: 100%;
+    height: 160px; /* Înălțime fixă pentru poze */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
-.hero__image{
-  position:absolute;inset:0;
-  background:
-    linear-gradient(0deg, rgba(0,0,0,.12), rgba(0,0,0,.12)),
-    radial-gradient(circle at 20% 30%, rgba(255,255,255,.20), transparent 48%),
-    linear-gradient(120deg, #2b2b2b, #1a1a1a);
-  background-size:cover;
-  background-position:center;
+
+.prof-img {
+    width: 85%;
+    height: 85%;
+    object-fit: cover; /* Poza se va adapta la căsuță fără să se deformeze */
+    background-color: #eee;
 }
-body.theme-dark .hero__image{
-  filter: brightness(.86) contrast(1.05) saturate(.95);
+
+/* ZONA DE TEXT SUB POZĂ */
+.prof-info {
+    margin-top: 10px;
+    width: 100%;
 }
-.hero__overlay{
-  position:absolute;inset:0;
+
+.prof-name {
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--primary-red);
+    margin: 5px 0 2px 0;
+    text-transform: uppercase;
 }
-.hero__title{
-  position:absolute;
-  left:50%;
-  top:46%;
-  transform:translate(-50%,-50%);
-  color:rgba(255,255,255,.55);
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-style:italic;
-  font-size:22px;
-  letter-spacing:.06em;
-  text-align:center;
-  text-shadow: 0 2px 12px rgba(0,0,0,.35);
-  white-space:nowrap;
+
+.prof-subject {
+    font-size: 12px;
+    color: var(--text-dark);
+    margin: 0;
+    padding-bottom: 5px;
 }
-.hero__credit{
-  position:absolute;
-  left:18px;
-  bottom:18px;
-  color:rgba(255,255,255,.55);
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-style:italic;
-  font-size:14px;
-  text-shadow: 0 2px 10px rgba(0,0,0,.35);
+
+/* FOOTER */
+.site-footer {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    font-size: 12px;
 }
