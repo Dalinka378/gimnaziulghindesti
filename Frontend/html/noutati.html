@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Noutăți – Liceul „Mihai Eminescu”</title>
     <link rel="stylesheet" href="../css/home.css" />
+    <link rel="stylesheet" href="../css/noutati.css" />
 </head>
 <body>
     <!-- (Include aici același TOP-MINI și HEADER din codul tău) -->
@@ -14,16 +15,74 @@
             <h2 class="section-title">Noutăți și Evenimente</h2>
             <div class="news-grid">
                 <!-- Articolele tale vin aici -->
-                <article class="news-card">
-                    <span class="news-card__date">14 Mai 2026</span>
-                    <h3 class="news-card__title">Titlu Noutate</h3>
-                    <p>Descrierea pe scurt a evenimentului recent din liceu.</p>
-                    <a href="#" class="news-card__link">Citește mai mult →</a>
-                </article>
-            </div>
-        </section>
-    </main>
+               <article class="news-card">
+    <span class="news-card__date">14 Mai 2026</span>
+    <h3 class="news-card__title">FAMILIA - Inimi Unite, Viitor Împlinit!</h3>
+    
+    <p>Ghindești, sunteți gata? Mâine, 15 mai, ne vedem să sărbătorim împreună Ziua Familiei! 🎉</p>
 
+    <button onclick="toggleReadMore()" id="readMoreBtn" class="fb-read-more">Citește mai mult...</button>
+
+    <div id="full-text" class="hidden-content">
+        <p>Pregătirile sunt pe ultima sută de metri și, după cum vedeți în imagini, la Gimnaziul „Mihai Eminescu” e mobilizare generală:</p>
+        <p>Măsurăm pavajul cu precizie milimetrică pentru ca totul să iasă „la linie”. 📏</p>
+        <p>Măturile „sfârâie”, iar curățenia e literă de lege. 🧹</p>
+        <p>Până și statuile au fost verificate, să nu care cumva să lipsească de la eveniment. 🐻</p>
+        <p>Cei mici sunt deja la post, gata de distracție. 👧👦</p>
+        <p>Am pus mână de la mână (și mătură de la mătură) ca să vă primim cu drag! Ne vedem mâine să unim inimi și să construim amintiri. ❤️</p>
+        <p><strong>Nu uitați: mâine, 15 mai, marea sărbătoare!</strong></p>
+
+       <div class="fb-grid" id="photoGrid">
+    <div class="grid-item"><img src="photo/photo1.jpg" alt="Poza 1"></div>
+    <div class="grid-item"><img src="photo/photo2.jpg" alt="Poza 2"></div>
+    <div class="grid-item"><img src="photo/photo3.jpg" alt="Poza 3"></div>
+    
+    <div class="grid-item last-item" id="plusTwoOverlay" onclick="showAllPhotos()">
+        <img src="photo/photo4.jpg" alt="Poza 4">
+        <div class="overlay">+2</div>
+    </div>
+
+    <div class="grid-item hidden-photo"><img src="photo/photo4.jpg" alt="Poza 4"></div>
+    <div class="grid-item hidden-photo"><img src="photo/photo5.jpg" alt="Poza 5"></div>
+</div>
+            </div>
+        </div>
+    </div>
+</article>
+
+<script>
+    function showAllPhotos() {
+    // 1. Selectăm toate pozele ascunse
+    var hiddenPhotos = document.querySelectorAll('.hidden-photo');
+    
+    // 2. Le facem vizibile
+    hiddenPhotos.forEach(function(photo) {
+        photo.style.display = 'block';
+    });
+
+    // 3. Eliminăm fundalul negru și textul "+2" de pe poza a patra
+    var overlay = document.querySelector('#plusTwoOverlay .overlay');
+    if (overlay) {
+        overlay.style.display = 'none';
+    }
+    
+    // 4. Opțional: Resetăm ID-ul ca să nu mai poată fi apăsat
+    document.getElementById('plusTwoOverlay').onclick = null;
+    document.getElementById('plusTwoOverlay').style.cursor = 'default';
+}
+function toggleReadMore() {
+    var content = document.getElementById("full-text");
+    var btn = document.getElementById("readMoreBtn");
+
+    if (content.style.display === "block") {
+        content.style.display = "none";
+        btn.innerHTML = "Citește mai mult →";
+    } else {
+        content.style.display = "block";
+        btn.innerHTML = "Arată mai puțin";
+    }
+}
+</script>
     <!-- (Include aici același SIDE-PANEL și FOOTER din codul tău) -->
     <script src="site.js"></script>
 </body>
